@@ -74,18 +74,18 @@ void loop() {
   // if ls and rs are on black, white
   else if ( O2 == isBlack && O1 == 0) { // O2 == 1
     // ls is black, turn left
-    digitalWrite(motorPinA1, HIGH);
+    digitalWrite(motorPinA1, LOW);
     digitalWrite(motorPinA2, LOW);
-    digitalWrite(motorPinB1, LOW);
+    digitalWrite(motorPinB1, HIGH);
     digitalWrite(motorPinB2, LOW);
   }
 
   // if ls and rs are on white, black
   else if ( O2 == 0 && O1 == isBlack) { // O1 == 1
     // rs is black, turn right
-    digitalWrite(motorPinA1, LOW);
+    digitalWrite(motorPinA1, HIGH);
     digitalWrite(motorPinA2, LOW);
-    digitalWrite(motorPinB1, HIGH);
+    digitalWrite(motorPinB1, LOW);
     digitalWrite(motorPinB2, LOW);
   }
 

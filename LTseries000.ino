@@ -10,13 +10,22 @@ uint16_t sensorValues[SensorCount];
 int S1=9; // rs
 int S2=3; // ls
 
+
 // rs motor
+int enA = 8; // Enable - formally in pin 6 V
 int motorPinA1 = 7; // P
 int motorPinA2 = 6; // n
 
 // ls motor
+int enB = 2; // Enable - formally in pin 4 V
 int motorPinB1 = 5; // P
 int motorPinB2 = 4; // n
+
+
+// motor speeds
+int Zoom = 150 // Speed of motors
+int TurnSpeed = 200;  // Rotation Speed
+int Brakes = 0; // No Speed
 
 
 // threshold values for black color detection on Sensor Array
@@ -69,6 +78,9 @@ void loop() {
     digitalWrite(motorPinA2, LOW);
     digitalWrite(motorPinB1, HIGH);
     digitalWrite(motorPinB2, LOW);
+    
+    analogWrite(enA, Zoom);
+    analogWrite(enB, Zoom);
   }
 
   // if ls and rs are on black, white
@@ -78,6 +90,9 @@ void loop() {
     digitalWrite(motorPinA2, LOW);
     digitalWrite(motorPinB1, HIGH);
     digitalWrite(motorPinB2, LOW);
+    
+    analogWrite(enA, TurnSpeed);
+    analogWrite(enB, TurnSpeed);
   }
 
   // if ls and rs are on white, black
@@ -87,6 +102,9 @@ void loop() {
     digitalWrite(motorPinA2, LOW);
     digitalWrite(motorPinB1, LOW);
     digitalWrite(motorPinB2, LOW);
+    
+    analogWrite(enA, TurnSpeed);
+    analogWrite(enB, TurnSpeed);
   }
 
   // if ls and rs are both on black/white and equal to isBlack
@@ -96,6 +114,9 @@ void loop() {
     digitalWrite(motorPinA2, LOW);
     digitalWrite(motorPinB1, LOW);
     digitalWrite(motorPinB2, LOW);
+    
+    analogWrite(enA, Brakes);
+    analogWrite(enB, Brakes);
   }
 
   // delay(1000);
